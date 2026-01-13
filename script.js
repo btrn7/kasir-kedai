@@ -1,74 +1,84 @@
-// Data menu berdasarkan screenshot
+// Data menu dengan foto
 const menuData = [
     {
         id: 1,
         name: "Es Teh Manis",
         price: 3000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 2,
         name: "Nasi Putih Biasa",
         price: 4000,
         category: "Makanan",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 3,
         name: "Es Kopyor",
         price: 8000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 4,
         name: "Smoothie Mangga",
         price: 12000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1577805947697-89e18249d767?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 5,
         name: "Strawberry Ice Tea",
         price: 10000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 6,
         name: "Rainbow Juice",
         price: 15000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 7,
         name: "Kopi Latte",
         price: 18000,
         category: "Minuman",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 8,
         name: "Mie Goreng Special",
         price: 25000,
         category: "Makanan",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 9,
         name: "Ayam Goreng Kremes",
         price: 22000,
         category: "Makanan",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1562967914-608f82629710?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     },
     {
         id: 10,
         name: "Nasi Campur",
         price: 20000,
         category: "Makanan",
-        status: "tersedia"
+        status: "tersedia",
+        image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
     }
 ];
 
@@ -263,7 +273,7 @@ function showMainApp() {
     updateCart();
 }
 
-// Render menu items
+// Render menu items dengan foto
 function renderMenuItems() {
     menuItemsContainer.innerHTML = '';
     
@@ -271,6 +281,15 @@ function renderMenuItems() {
         const menuItem = document.createElement('div');
         menuItem.className = 'menu-item';
         menuItem.innerHTML = `
+            <div class="menu-item-image">
+                ${item.image ? 
+                    `<img src="${item.image}" alt="${item.name}" loading="lazy">` : 
+                    `<div class="image-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>Tidak ada foto</span>
+                    </div>`
+                }
+            </div>
             <div class="item-header">
                 <div class="item-name">${item.name}</div>
                 <div class="item-price">${formatRupiah(item.price)}</div>
@@ -550,7 +569,7 @@ confirmPaymentBtn.addEventListener('click', () => {
     showNotification('Pembayaran berhasil! Struk telah dicetak.', 'success');
 });
 
-// Tampilkan struk
+// Tampilkan struk dengan foto mini
 function showReceipt(transaction) {
     let receiptContent = `
         <div style="text-align: center; margin-bottom: 20px;">
@@ -568,9 +587,14 @@ function showReceipt(transaction) {
     
     transaction.items.forEach(item => {
         receiptContent += `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                <span>${item.name} x${item.quantity}</span>
-                <span>${formatRupiah(item.price * item.quantity)}</span>
+            <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                <div style="width: 40px; height: 40px; border-radius: 5px; overflow: hidden; margin-right: 10px; background-color: #f0f0f0;">
+                    ${item.image ? `<img src="${item.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${item.name}">` : '<div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: #999;">-</div>'}
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-weight: 500;">${item.name} x${item.quantity}</div>
+                    <div style="font-size: 14px; color: #666;">${formatRupiah(item.price * item.quantity)}</div>
+                </div>
             </div>
         `;
     });
@@ -612,6 +636,7 @@ function showReceipt(transaction) {
             <style>
                 body { font-family: 'Courier New', monospace; padding: 20px; }
                 hr { border: none; border-top: 1px dashed #000; margin: 15px 0; }
+                img { max-width: 100%; }
             </style>
         </head>
         <body>

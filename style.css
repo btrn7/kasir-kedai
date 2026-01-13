@@ -287,8 +287,10 @@ header {
 .menu-item {
     border: 1px solid var(--light-gray);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-item:hover {
@@ -296,11 +298,50 @@ header {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
+.menu-item-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.menu-item:hover .menu-item-image img {
+    transform: scale(1.05);
+}
+
+.image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.image-placeholder i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
 .item-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .item-name {
@@ -312,6 +353,7 @@ header {
 .item-price {
     font-weight: 700;
     color: var(--primary);
+    font-size: 16px;
 }
 
 .item-category {
@@ -323,6 +365,7 @@ header {
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 10px;
+    align-self: flex-start;
 }
 
 .item-status {
@@ -344,7 +387,7 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 15px;
+    margin-top: auto;
 }
 
 .quantity-control input {
@@ -721,5 +764,9 @@ header {
     
     .menu-item {
         padding: 15px;
+    }
+    
+    .menu-item-image {
+        height: 150px;
     }
 }
